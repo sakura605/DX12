@@ -1,5 +1,6 @@
 #pragma once
 
+
 // 각종 include
 #include <windows.h>
 #include <tchar.h>
@@ -30,17 +31,34 @@ using namespace Microsoft::WRL;
 #pragma comment(lib, "d3dcompiler")
 
 // 각종 typedef
-using int8 = __int8;
-using int16 = __int16;
-using int32 = __int32;
-using int64 = __int64;
-using uint8 = unsigned __int8;
-using uint16 = unsigned __int16;
-using uint32 = unsigned __int32;
-using uint64 = unsigned __int64;
-using Vec2 = XMFLOAT2;
-using Vec3 = XMFLOAT3;
-using Vec4 = XMFLOAT4;
-using Matrix = XMMATRIX;
+using int8		= __int8;
+using int16		= __int16;
+using int32		= __int32;
+using int64		= __int64;
+using uint8		= unsigned __int8;
+using uint16	= unsigned __int16;
+using uint32	= unsigned __int32;
+using uint64	= unsigned __int64;
+using Vec2		= XMFLOAT2;
+using Vec3		= XMFLOAT3;
+using Vec4		= XMFLOAT4;
+using Matrix	= XMMATRIX;
 
-void HelloEngine();
+enum
+{
+	SWAP_CHAIN_BUFFER_COUNT = 2
+};
+
+
+struct  WindowInfo
+{
+	HWND	hwnd;		//출력 윈도우
+	int32	width;		//너비
+	int32	height;		//높이
+	bool	windowed;	// 창모드 or 전체화면
+};
+
+#define DEVICE		GEngine->GetDevice()->GetDevice();
+#define CMD_LIST	GEngine->GetCmdQueue()->GetCmdList();
+
+extern unique_ptr<class Engine> GEngine;
