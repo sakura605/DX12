@@ -1,8 +1,9 @@
 #include "pch.h"
 #include "SwapChain.h"
 
+
 void SwapChain::Init(const WindowInfo& info, ComPtr<ID3D12Device> device, ComPtr<IDXGIFactory> dxgi, ComPtr<ID3D12CommandQueue> cmdQueue)
-{ 
+{
 	CreateSwapChain(info, dxgi, cmdQueue);
 	CreateRTV(device);
 }
@@ -44,12 +45,10 @@ void SwapChain::CreateSwapChain(const WindowInfo& info, ComPtr<IDXGIFactory> dxg
 
 	for (int32 i = 0; i < SWAP_CHAIN_BUFFER_COUNT; i++)
 		_swapChain->GetBuffer(i, IID_PPV_ARGS(&_rtvBuffer[i]));
-
 }
 
 void SwapChain::CreateRTV(ComPtr<ID3D12Device> device)
 {
-
 	// Descriptor (DX12) = View (~DX11)
 	// [서술자 힙]으로 RTV 생성
 	// DX11의 RTV(RenderTargetView), DSV(DepthStencilView), 

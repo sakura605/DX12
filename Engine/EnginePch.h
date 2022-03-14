@@ -1,6 +1,5 @@
 #pragma once
 
-
 // 각종 include
 #include <windows.h>
 #include <tchar.h>
@@ -49,13 +48,12 @@ enum
 	SWAP_CHAIN_BUFFER_COUNT = 2
 };
 
-
-struct  WindowInfo
+struct WindowInfo
 {
-	HWND	hwnd;		//출력 윈도우
-	int32	width;		//너비
-	int32	height;		//높이
-	bool	windowed;	// 창모드 or 전체화면
+	HWND	hwnd; // 출력 윈도우
+	int32	width; // 너비
+	int32	height; // 높이
+	bool	windowed; // 창모드 or 전체화면
 };
 
 struct Vertex
@@ -64,8 +62,13 @@ struct Vertex
 	Vec4 color;
 };
 
-#define DEVICE		GEngine->GetDevice()->GetDevice()
-#define CMD_LIST	GEngine->GetCmdQueue()->GetCmdList()
+struct Transform
+{
+	Vec4 offset;
+};
+
+#define DEVICE			GEngine->GetDevice()->GetDevice()
+#define CMD_LIST		GEngine->GetCmdQueue()->GetCmdList()
 #define ROOT_SIGNATURE	GEngine->GetRootSignature()->GetSignature()
 
 extern unique_ptr<class Engine> GEngine;

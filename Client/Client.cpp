@@ -4,6 +4,7 @@
 #include "framework.h"
 #include "Client.h"
 #include "Game.h"
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -58,15 +59,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         {
             if (msg.message == WM_QUIT)
                 break;
-            
-            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-            {
-                TranslateMessage(&msg);
-                DispatchMessage(&msg);
-            }
+
+			if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+			}
         }
 
-        // TODO : 게임 로직
+		// TODO
         game->Update();
     }
 
