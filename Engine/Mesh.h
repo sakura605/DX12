@@ -28,4 +28,3 @@ private:
 	Transform _transform = {};
 	shared_ptr<Texture> _tex = {};
 };
-
