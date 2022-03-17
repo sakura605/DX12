@@ -84,8 +84,8 @@ enum
 {
 	SWAP_CHAIN_BUFFER_COUNT = 2,
 	CBV_REGISTER_COUNT = CBV_REGISTER::END,
-	SRV_REGISTER_COUNT = static_cast<uint8>(SRV_REGISTER::END) - CBV_REGISTER_COUNT,
-	REGISTER_COUNT = CBV_REGISTER_COUNT + SRV_REGISTER_COUNT,
+	SRV_REGISTER_COUNT = static_cast<uint8>(SRV_REGISTER::END) - static_cast<uint8>(CBV_REGISTER_COUNT),
+	REGISTER_COUNT = static_cast<uint8>(CBV_REGISTER_COUNT) + static_cast<uint8>(SRV_REGISTER_COUNT),
 };
 
 struct WindowInfo
@@ -103,13 +103,27 @@ struct Vertex
 	Vec2 uv;
 };
 
+#define DECLARE_SINGLE(type)		\
+private:							\
+	type() {}						\
+	~type() {}						\
+public:								\
+	static type* GetInstance()		\
+	{								\
+		static type instance;		\
+		return &instance;			\
+	}								\
+
+#define GET_SINGLE(type)	type::GetInstance()
+
+
 #define DEVICE				GEngine->GetDevice()->GetDevice()
 #define CMD_LIST			GEngine->GetCmdQueue()->GetCmdList()
 #define RESOURCE_CMD_LIST	GEngine->GetCmdQueue()->GetResourceCmdList()
 #define ROOT_SIGNATURE		GEngine->GetRootSignature()->GetSignature()
 
-#define INPUT				GEngine->GetInput()
-#define DELTA_TIME			GEngine->GetTimer()->GetDeltaTime()
+#define INPUT				GET_SINGLE(Input)
+#define DELTA_TIME			GET_SINGLE(Timer)->GetDeltaTime()
 
 #define CONST_BUFFER(type)	GEngine->GetConstantBuffer(type)
 
