@@ -26,6 +26,7 @@ public:
 	shared_ptr<RootSignature> GetRootSignature() { return _rootSignature; }
 	shared_ptr<TableDescriptorHeap> GetTableDescHeap() { return _tableDescHeap; }
 	shared_ptr<DepthStencilBuffer> GetDepthStencilBuffer() { return _depthStencilBuffer; }
+
 	shared_ptr<ConstantBuffer> GetConstantBuffer(CONSTANT_BUFFER_TYPE type) { return _constantBuffers[static_cast<uint8>(type)]; }
 
 public:
@@ -51,7 +52,7 @@ private:
 	shared_ptr<RootSignature> _rootSignature = make_shared<RootSignature>();
 	shared_ptr<TableDescriptorHeap> _tableDescHeap = make_shared<TableDescriptorHeap>();
 	shared_ptr<DepthStencilBuffer> _depthStencilBuffer = make_shared<DepthStencilBuffer>();
-	
+
 	vector<shared_ptr<ConstantBuffer>> _constantBuffers;
 };
 

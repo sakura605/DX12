@@ -7,7 +7,7 @@ enum class COMPONENT_TYPE : uint8
 	MESH_RENDERER,
 	CAMERA,
 	LIGHT,
-	//...
+	// ...
 	MONO_BEHAVIOUR,
 	END,
 };
@@ -35,7 +35,7 @@ public:
 
 public:
 	COMPONENT_TYPE GetType() { return _type; }
-	bool isValid() { return _gameObject.expired() == false; }
+	bool IsValid() { return _gameObject.expired() == false; }
 
 	shared_ptr<GameObject> GetGameObject();
 	shared_ptr<Transform> GetTransform();

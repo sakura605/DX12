@@ -17,8 +17,8 @@ void Transform::FinalUpdate()
 {
 	Matrix matScale = Matrix::CreateScale(_localScale);
 	Matrix matRotation = Matrix::CreateRotationX(_localRotation.x);
-	matRotation += Matrix::CreateRotationY(_localRotation.y);
-	matRotation += Matrix::CreateRotationZ(_localRotation.z);
+	matRotation *= Matrix::CreateRotationY(_localRotation.y);
+	matRotation *= Matrix::CreateRotationZ(_localRotation.z);
 	Matrix matTranslation = Matrix::CreateTranslation(_localPosition);
 
 	_matLocal = matScale * matRotation * matTranslation;

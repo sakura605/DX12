@@ -7,7 +7,6 @@ public:
 	Transform();
 	virtual ~Transform();
 
-	// TODO : 온갖 Parent/Child 관계
 	virtual void FinalUpdate() override;
 	void PushData();
 
@@ -33,15 +32,14 @@ public:
 	weak_ptr<Transform> GetParent() { return _parent; }
 
 private:
-	// TODO : World 위치 관련
-
 	// Parent 기준
 	Vec3 _localPosition = {};
 	Vec3 _localRotation = {};
 	Vec3 _localScale = { 1.f, 1.f, 1.f };
 
-	Matrix _matLocal = {};
+	Matrix _matLocal= {};
 	Matrix _matWorld = {};
 
 	weak_ptr<Transform> _parent;
 };
+

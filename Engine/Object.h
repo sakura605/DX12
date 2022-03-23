@@ -3,7 +3,7 @@
 enum class OBJECT_TYPE : uint8
 {
 	NONE,
-	GAMEOBJECT,	//PREFAB
+	GAMEOBJECT, // PREFAB
 	COMPONENT,
 	MATERIAL,
 	MESH,
@@ -27,7 +27,7 @@ public:
 	OBJECT_TYPE GetType() { return _objectType; }
 
 	void SetName(const wstring& name) { _name = name; }
-	const wstring GetName() { return _name; }
+	const wstring& GetName() { return _name; }
 
 	// TODO : Instantiate
 

@@ -5,16 +5,18 @@
 
 Mesh::Mesh() : Object(OBJECT_TYPE::MESH)
 {
+
 }
 
 Mesh::~Mesh()
 {
+
 }
 
-void Mesh::Init(const vector<Vertex>& vertexBuffer, const vector<uint32>& indexbuffer)
+void Mesh::Init(const vector<Vertex>& vertexBuffer, const vector<uint32>& indexBuffer)
 {
 	CreateVertexBuffer(vertexBuffer);
-	CreateIndexBuffer(indexbuffer);
+	CreateIndexBuffer(indexBuffer);
 }
 
 void Mesh::Render()
@@ -54,7 +56,7 @@ void Mesh::CreateVertexBuffer(const vector<Vertex>& buffer)
 	// Initialize the vertex buffer view.
 	_vertexBufferView.BufferLocation = _vertexBuffer->GetGPUVirtualAddress();
 	_vertexBufferView.StrideInBytes = sizeof(Vertex); // 정점 1개 크기
-	_vertexBufferView.SizeInBytes = bufferSize; // 버퍼의 크기
+	_vertexBufferView.SizeInBytes = bufferSize; // 버퍼의 크기	
 }
 
 void Mesh::CreateIndexBuffer(const vector<uint32>& buffer)

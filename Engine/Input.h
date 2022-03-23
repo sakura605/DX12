@@ -53,3 +53,4 @@ private:
 	HWND _hwnd;
 	vector<KEY_STATE> _states;
 };
+

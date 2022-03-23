@@ -52,6 +52,7 @@ void CommandQueue::WaitSync()
 	}
 }
 
+
 void CommandQueue::RenderBegin(const D3D12_VIEWPORT* vp, const D3D12_RECT* rect)
 {
 	_cmdAlloc->Reset();
@@ -59,12 +60,14 @@ void CommandQueue::RenderBegin(const D3D12_VIEWPORT* vp, const D3D12_RECT* rect)
 
 	D3D12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(
 		_swapChain->GetBackRTVBuffer().Get(),
-		D3D12_RESOURCE_STATE_PRESENT,			// 화면 출력
-		D3D12_RESOURCE_STATE_RENDER_TARGET);	// 외주 결과물
+		D3D12_RESOURCE_STATE_PRESENT, // 화면 출력
+		D3D12_RESOURCE_STATE_RENDER_TARGET); // 외주 결과물
 
 	_cmdList->SetGraphicsRootSignature(ROOT_SIGNATURE.Get());
+
 	GEngine->GetConstantBuffer(CONSTANT_BUFFER_TYPE::TRANSFORM)->Clear();
 	GEngine->GetConstantBuffer(CONSTANT_BUFFER_TYPE::MATERIAL)->Clear();
+
 	GEngine->GetTableDescHeap()->Clear();
 
 	ID3D12DescriptorHeap* descHeap = GEngine->GetTableDescHeap()->GetDescriptorHeap().Get();
@@ -80,9 +83,9 @@ void CommandQueue::RenderBegin(const D3D12_VIEWPORT* vp, const D3D12_RECT* rect)
 	D3D12_CPU_DESCRIPTOR_HANDLE backBufferView = _swapChain->GetBackRTV();
 	_cmdList->ClearRenderTargetView(backBufferView, Colors::Black, 0, nullptr);
 
-
 	D3D12_CPU_DESCRIPTOR_HANDLE depthStencilView = GEngine->GetDepthStencilBuffer()->GetDSVCpuHandle();
 	_cmdList->OMSetRenderTargets(1, &backBufferView, FALSE, &depthStencilView);
+
 	_cmdList->ClearDepthStencilView(depthStencilView, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
 }
 
@@ -91,7 +94,7 @@ void CommandQueue::RenderEnd()
 	D3D12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(
 		_swapChain->GetBackRTVBuffer().Get(),
 		D3D12_RESOURCE_STATE_RENDER_TARGET, // 외주 결과물
-		D3D12_RESOURCE_STATE_PRESENT);		// 화면 출력
+		D3D12_RESOURCE_STATE_PRESENT); // 화면 출력
 
 	_cmdList->ResourceBarrier(1, &barrier);
 	_cmdList->Close();

@@ -1,12 +1,11 @@
 #pragma once
 #include "Component.h"
 
-
-class Monobehaviour : public Component
+class MonoBehaviour : public Component
 {
 public:
-	Monobehaviour();
-	virtual ~Monobehaviour();
+	MonoBehaviour();
+	virtual ~MonoBehaviour();
 
 private:
 	virtual void FinalUpdate() sealed { }

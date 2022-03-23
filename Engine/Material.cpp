@@ -4,10 +4,12 @@
 
 Material::Material() : Object(OBJECT_TYPE::MATERIAL)
 {
+
 }
 
 Material::~Material()
 {
+
 }
 
 void Material::PushData()
@@ -25,6 +27,6 @@ void Material::PushData()
 		GEngine->GetTableDescHeap()->SetSRV(_textures[i]->GetCpuHandle(), reg);
 	}
 
-	// 파이프라인 셋팅
+	// 파이프라인 세팅
 	_shader->Update();
 }

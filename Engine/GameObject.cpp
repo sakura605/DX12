@@ -4,14 +4,16 @@
 #include "MeshRenderer.h"
 #include "Camera.h"
 #include "Light.h"
-#include "Monobehaviour.h"
+#include "MonoBehaviour.h"
 
 GameObject::GameObject() : Object(OBJECT_TYPE::GAMEOBJECT)
 {
+
 }
 
 GameObject::~GameObject()
 {
+
 }
 
 void GameObject::Awake()
@@ -22,7 +24,7 @@ void GameObject::Awake()
 			component->Awake();
 	}
 
-	for (shared_ptr<Monobehaviour>& script : _scripts)
+	for (shared_ptr<MonoBehaviour>& script : _scripts)
 	{
 		script->Awake();
 	}
@@ -36,7 +38,7 @@ void GameObject::Start()
 			component->Start();
 	}
 
-	for (shared_ptr<Monobehaviour>& script : _scripts)
+	for (shared_ptr<MonoBehaviour>& script : _scripts)
 	{
 		script->Start();
 	}
@@ -50,7 +52,7 @@ void GameObject::Update()
 			component->Update();
 	}
 
-	for (shared_ptr<Monobehaviour>& script : _scripts)
+	for (shared_ptr<MonoBehaviour>& script : _scripts)
 	{
 		script->Update();
 	}
@@ -64,7 +66,7 @@ void GameObject::LateUpdate()
 			component->LateUpdate();
 	}
 
-	for (shared_ptr<Monobehaviour>& script : _scripts)
+	for (shared_ptr<MonoBehaviour>& script : _scripts)
 	{
 		script->LateUpdate();
 	}
@@ -121,6 +123,6 @@ void GameObject::AddComponent(shared_ptr<Component> component)
 	}
 	else
 	{
-		_scripts.push_back(dynamic_pointer_cast<Monobehaviour>(component));
+		_scripts.push_back(dynamic_pointer_cast<MonoBehaviour>(component));
 	}
 }

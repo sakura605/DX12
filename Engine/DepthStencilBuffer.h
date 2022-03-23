@@ -16,3 +16,4 @@ private:
 	D3D12_CPU_DESCRIPTOR_HANDLE			_dsvHandle = {};
 	DXGI_FORMAT							_dsvFormat = {};
 };
+

@@ -1,7 +1,7 @@
 #pragma once
-#include "Monobehaviour.h"
+#include "MonoBehaviour.h"
 
-class TestCameraScript : public Monobehaviour
+class TestCameraScript : public MonoBehaviour
 {
 public:
 	TestCameraScript();
@@ -10,6 +10,6 @@ public:
 	virtual void LateUpdate() override;
 
 private:
-	float	_speed = 100.f;
+	float		_speed = 100.f;
 };
 

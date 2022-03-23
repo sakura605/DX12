@@ -6,16 +6,17 @@
 
 MeshRenderer::MeshRenderer() : Component(COMPONENT_TYPE::MESH_RENDERER)
 {
+
 }
 
 MeshRenderer::~MeshRenderer()
 {
+
 }
 
 void MeshRenderer::Render()
 {
-	GetTransform()->PushData();
-
+	 GetTransform()->PushData();
 	_material->PushData();
 	_mesh->Render();
 }

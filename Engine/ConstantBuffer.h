@@ -47,3 +47,4 @@ private:
 
 	CBV_REGISTER			_reg = {};
 };
+
