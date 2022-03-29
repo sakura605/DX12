@@ -1,8 +1,8 @@
-#ifndef _DEFAULT_HLSLI_
-#define _DEFAULT_HLSLI_
+#ifndef _DEFAULT_FX_
+#define _DEFAULT_FX_
 
-#include "params.hlsli"
-#include "utils.hlsli"
+#include "params.fx"
+#include "utils.fx"
 
 struct VS_IN
 {
@@ -38,7 +38,7 @@ VS_OUT VS_Main(VS_IN input)
 }
 
 float4 PS_Main(VS_OUT input) : SV_Target
-{ 
+{
     float4 color = float4(1.f, 1.f, 1.f, 1.f);
     if (g_tex_on_0)
         color = g_tex_0.Sample(g_sam_0, input.uv);

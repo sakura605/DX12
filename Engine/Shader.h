@@ -23,7 +23,6 @@ struct ShaderInfo
 	DEPTH_STENCIL_TYPE depthStencilType = DEPTH_STENCIL_TYPE::LESS;
 };
 
-// [일감 기술서] 외주 인력들이 뭘 해야할지 기술
 class Shader : public Object
 {
 public:
